@@ -1,0 +1,83 @@
+<odoo>
+    <template id="12" name="Application_Form">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h3 class="text-center">Apply for Pre-incubation</h3>
+                <form method="post" t-attf-action="/apply" class="oe_form mx-auto mt-4" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                    <h4>Personal Information</h4>
+                    <div class="for-group">
+                        <label for="name">Your Name:</label>
+                        <input type="text" name="name" class="form-control" required="True"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Your Surname:</label>
+                        <input type="text" name="surname" class="form-control" required="True"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" class="form-control" required="True" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Enter a valid email address"/>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="phone">Phone Number:</label>
+                        <input type="text" name="phone" class="form-control" required="True"/>
+                    </div>
+
+                    <h4>Project Information</h4>
+                    <div class="form-group">
+                        <label for="project_name">Project Name:</label>
+                        <input type="text" name="project_name" class="form-control" required="True"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="project_description">Project Description:</label>
+                        <textarea name="project_description" class="form-control" rows="3" required="True"></textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="project_sector">Project Sector:</label>
+                        <input type="text" name="project_sector" class="form-control" required="True"/>
+                    </div>
+
+                    <h4 class="mb-3">Project Documentation</h4>
+                    <div class="form-group mb-3">
+                        <label for="canvas">Canvas Business Model Evaluation Form:</label>
+                        <input type="file" name="canvas" accept=".pdf, .doc, .docx" class="form-control-file" required="True"/>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="business_plan">Beneficiary Group Project Business Plan:</label>
+                        <input type="file" name="business_plan" accept=".pdf, .doc, .docx" class="form-control-file" required="True"/>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="fsmh">FSMH held or applied for (if any):</label>
+                        <input type="file" name="fsmh" accept=".pdf, .doc, .docx" class="form-control-file"/>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="incentives">R-D government incentives (Tübitak, KOSGEB etc. - if any):</label>
+                        <input type="file" name="incentives" accept=".pdf, .doc, .docx" class="form-control-file" multiple="true"/>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="resumes">Project team resumes:</label>
+                        <input type="file" name="resumes" accept=".pdf, .doc, .docx" class="form-control-file" multiple="true" required="True"/>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="project_information">Project Information Presentation:</label>
+                        <input type="file" name="project_information" accept=".ppt, .pptx" class="form-control-file" required="True"/>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="gallery">Visuals, pictures, videos of the project:</label>
+                        <input type="file" name="gallery" accept=".jpg, .jpeg, .png, .gif, .mp4, .avi, .mov" class="form-control-file" multiple="true" required="True"/>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="reference">Reference:</label>
+                        <input type="file" name="reference" accept=".pdf, .doc, .docx" class="form-control-file" required="True"/>
+                    </div>
+
+                    <div class="text-center mb-3">
+                        <button type="submit" class="btn btn-primary mt-3">Apply</button>
+                    </div>
+
+                </form>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_application,access_project_application,eng_pro.model_project_application,base.group_user,1,1,1,1
+access_project_group,access_project_group,eng_pro.model_project_group,base.group_user,1,1,1,1
+access_file_attachment,access_file_attachment,eng_pro.model_file_attachment,base.group_user,1,1,1,1
+access_gallery_attachment,access_gallery_attachment,eng_pro.model_gallery_attachment,base.group_user,1,1,1,1

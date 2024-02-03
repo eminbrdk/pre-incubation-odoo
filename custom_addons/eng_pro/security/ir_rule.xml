@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+
+        <!-- userlar sadece kendi yarattıkları mülkleri görebilecek -->
+        <!-- sil, yarat, değiştir, oku özelliklerinide ayarladık -->
+        <record id="project_rule_for_project_group" model="ir.rule">
+            <field name="name">Project Rule for Project Group</field>
+            <field name="model_id" ref="eng_pro.model_project_group"/>
+            <field name="domain_force">[('user_id', '=', user.id)]</field> <!-- kısıt burada -->
+            <field name="groups" eval="[(4, ref('eng_pro.group_project_group'))]"/>
+            <field name="perm_read">1</field>
+            <field name="perm_write">1</field>
+            <field name="perm_create">0</field>
+            <field name="perm_unlink">0</field>
+        </record>
+
+        <!-- managerlar her mülkü görebilecek -->
+        <!-- sil, yarat, değiştir, oku özelliklerinide ayarladık -->
+        <record id="project_rule_for_manager" model="ir.rule">
+            <field name="name">Project Rule for Manager</field>
+            <field name="model_id" ref="eng_pro.model_project_group"/>
+            <field name="domain_force">[(1, '=', 1)]</field> <!-- kısıt burada -->
+            <field name="groups" eval="[(4, ref('eng_pro.group_project_manager'))]"/>
+            <field name="perm_read">1</field>
+            <field name="perm_write">1</field>
+            <field name="perm_create">1</field>
+            <field name="perm_unlink">1</field>
+        </record>
+    </data>
+</odoo>

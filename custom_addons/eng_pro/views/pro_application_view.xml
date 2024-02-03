@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <!-- Ana ekranda gözükecekler -->
+        <record id="project_application_tree_view" model="ir.ui.view">
+            <field name="name">project.application.tree</field>
+            <field name="model">project.application</field>
+            <field name="arch" type="xml">
+                <tree decoration-success="status == 'accepted'" decoration-danger="status == 'refused'">
+                    <field name="name"/>
+                    <field name="project_name"/>
+                    <field name="apply_date"/>
+                    <field name="decision_maker"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- filtreleme ekledik -->
+        <record id="project_application_search_view" model="ir.ui.view">
+            <field name="name">project.application.search</field>
+            <field name="model">project.application</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="status"/>
+                    <filter string="Accepted" name="accept_state" domain="[('status', '=', 'accepted')]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="State" name="state_group" context="{'group_by': 'status'}"/>
+                    </group>
+                    <searchpanel>
+                        <field name="status" string="FILTRELE" icon="fa-filter" groupby="state_group" limit="0"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+        <!-- new'e basıldığında gelen ekran -->
+        <record id="project_application_form_view" model="ir.ui.view">
+            <field name="name">project.application.form</field>
+            <field name="model">project.application</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header> <!-- butonları en başdaki headera ekledik -->
+                        <button name="accept_pressed" type="object" string="Accept" class="btn btn-success"/>
+                        <button name="reject_pressed" type="object" string="Reject" class="btn btn-danger"/>
+                        <field name="status"
+                               widget="statusbar"/> <!-- statusbar_visible="new, received, " bunla gösterilecekleri sınırlayabilirsin -->
+                    </header>
+                    <sheet> <!-- içeriklerin bulunduğu kare -->
+                        <h2>Personal and Project Information</h2>
+                        <group>
+                            <group>
+                                <field name="name" readonly="1"/>
+                                <field name="surname" readonly="1"/>
+                                <field name="email" widget="email" readonly="1"/>
+                                <field name="phone" widget="phone" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="project_name" readonly="1"/>
+                                <field name="project_description" readonly="1"/>
+                                <field name="project_sector" readonly="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Project Documentations">
+                                <group>
+                                    <field name="canvas" filename="project_file_name" readonly="1"/>
+                                    <field name="business_plan" filename="project_file_name" readonly="1"/>
+                                    <field name="fsmh" filename="project_file_name" readonly="1"/>
+                                    <field name="incentives" filename="project_file_name" readonly="1"/>
+                                    <field name="resumes" readonly="1">
+                                            <tree>
+                                                <field name="data" filename="project_file_name"/>
+                                            </tree>
+                                    </field>
+                                    <field name="project_information" filename="project_file_name" readonly="1"/>
+                                    <field name="gallery" readonly="1">
+                                        <tree>
+                                            <field name="data" filename="project_file_name"/>
+                                        </tree>
+                                    </field>
+                                    <field name="reference" filename="project_file_name" readonly="1"/>
+                                </group>
+                            </page>
+                            <page string="Application Information">
+                                <group>
+                                    <field name="apply_date" readonly="1"/>
+                                    <field name="decision_maker" readonly="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- tıklandığında bu ekrana gelmemiz için yazılan kod -->
+        <record id="action_property"
+                model="ir.actions.act_window"> <!-- action_property ile menu_itemda tıklama ile butaya geldik -->
+            <field name="name">Applications</field>
+            <field name="res_model">project.application</field>
+            <field name="view_mode">tree,form</field> <!-- hangisini öne koyarsan onla başlarsın -->
+            <field name="view_id"
+                   ref="project_application_tree_view"/> <!-- ana ekranının id'si -->
+            <field name="help" type="html">
+                <p>
+                    Buraya alakalı bir şeyler yaz falan filan
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>
