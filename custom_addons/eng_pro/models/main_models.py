@@ -95,3 +95,33 @@ class ProjectGroup(models.Model):
     project_sector = fields.Char(string='Project Sector', required=True)
 
     user_id = fields.Many2one("res.users", string="Grubun Sistem Kullanıcısı")
+
+
+class PortalUserCreator(models.TransientModel):
+    _name = 'portal.user.creator'
+
+    name = fields.Char(string='Name')
+    email = fields.Char(string='Email')
+    password = fields.Char(string='Password')
+
+    def create_portal_user(self):
+        User = self.env['res.users'].sudo()
+
+        # Create a new user with the portal group
+        user_vals = {
+            'name': self.name,
+            'login': self.email,
+            'email': self.email,
+            'password': self.password,
+            'groups_id': [(6, 0, [self.env.ref('base.group_portal').id])],
+        }
+        new_user = User.create(user_vals)
+
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'res.users',
+            'view_mode': 'form',
+            'view_type': 'form',
+            'res_id': new_user.id,
+            'target': 'current',
+        }

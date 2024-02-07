@@ -16,6 +16,9 @@
         "views/menu_items.xml",
 
         "views/apply_web_view.xml",
+        "views/create_user_web_view.xml",
+        "views/aplly_success_web_view.xml",
+        "views/create_user_success.xml"
     ],
     "demo": [],
     'installable': True,

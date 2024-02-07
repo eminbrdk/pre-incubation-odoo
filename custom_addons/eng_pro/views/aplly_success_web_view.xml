@@ -1,0 +1,17 @@
+<odoo>
+    <template id="as" name="apply_success_FORM">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h3 class="text-center">Application is successful. Now go to main page</h3>
+                <form method="post" t-attf-action="/apply_success" class="oe_form mx-auto mt-4" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                    <div class="text-center mb-3">
+                        <button type="submit" class="btn btn-primary mt-3">Go</button>
+                    </div>
+
+                </form>
+            </div>
+        </t>
+    </template>
+</odoo>

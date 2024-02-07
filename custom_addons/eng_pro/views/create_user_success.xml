@@ -1,0 +1,17 @@
+<odoo>
+    <template id="cus" name="CREATE_USER_SUCCESS">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h3 class="text-center">Portal user successfully created. Log in</h3>
+                <form method="post" t-attf-action="/create_user_success" class="oe_form mx-auto mt-4" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                    <div class="text-center mb-3">
+                        <button type="submit" class="btn btn-primary mt-3">Log In</button>
+                    </div>
+
+                </form>
+            </div>
+        </t>
+    </template>
+</odoo>

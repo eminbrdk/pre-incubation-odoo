@@ -6,7 +6,9 @@ from datetime import date
 
 class ApplyWebsite(http.Controller):
 
-    @http.route("/apply", type="http", auth="public", website=True, methods=["GET", "POST"])
+    # user yaptık çünkü sadece giriş yapanlar erişsin istedik
+    # public yaparsak herkes erişir
+    @http.route("/apply", type="http", auth="user", website=True, methods=["GET", "POST"])
     def create_property_tag(self, **post):
         if request.httprequest.method == "POST":
 
@@ -89,3 +91,36 @@ class ApplyWebsite(http.Controller):
             return request.redirect("/")
 
         return request.render("eng_pro.12")
+
+    @http.route("/create_portal_user", type="http", auth="public", website=True, methods=["GET", "POST"])
+    def create_portal_user(self, **post):
+        if request.httprequest.method == "POST":
+
+            name = post.get("name")
+            password = post.get("password")
+            email = post.get("email")
+
+            new_portal_user = request.env["portal.user.creator"].sudo().create({
+                "name": name,
+                "email": email,
+                "password": password
+            })
+
+            new_portal_user.create_portal_user()
+            return request.redirect("/create_user_success")
+
+        return request.render("eng_pro.cpu")
+
+    @http.route("/create_user_success", type="http", auth="public", website=True, methods=["GET", "POST"])
+    def create_user_success(self, **post):
+        if request.httprequest.method == "POST":
+            return request.redirect("/apply")
+
+        return request.render("eng_pro.cus")
+
+    @http.route("/apply_success", type="http", auth="user", website=True, methods=["GET", "POST"])
+    def apply_success(self, **post):
+        if request.httprequest.method == "POST":
+            return request.redirect("/my/home")
+
+        return request.render("eng_pro.as")
