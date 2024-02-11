@@ -34,7 +34,8 @@ class Application(models.Model):
         default="not_evaluated"
     )
     apply_date = fields.Date(string="Application Date")
-    decision_maker = fields.Many2one("res.users", string="Decision_maker")
+    decision_maker = fields.Many2one("res.users", string="Decision maker")
+    portal_user_id = fields.Many2one("res.users", string="Portal user who applied")
     project_group = fields.Many2one("project.group", string="Project Group")
 
     def accept_pressed(self):

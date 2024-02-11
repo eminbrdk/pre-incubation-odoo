@@ -8,7 +8,7 @@
             <field name="model">project.application</field>
             <field name="arch" type="xml">
                 <tree decoration-success="status == 'accepted'" decoration-danger="status == 'refused'">
-                    <field name="name"/>
+                    <field name="portal_user_id"/>
                     <field name="project_name"/>
                     <field name="apply_date"/>
                     <field name="decision_maker"/>
@@ -51,6 +51,7 @@
                         <h2>Personal and Project Information</h2>
                         <group>
                             <group>
+                                <field name="portal_user_id" readonly="1"/>
                                 <field name="name" readonly="1"/>
                                 <field name="surname" readonly="1"/>
                                 <field name="email" widget="email" readonly="1"/>

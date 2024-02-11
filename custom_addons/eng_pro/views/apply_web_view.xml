@@ -3,6 +3,21 @@
         <t t-call="website.layout">
             <div class="container mt-5">
                 <h3 class="text-center">Apply for Pre-incubation</h3>
+
+                <t t-if="alert">
+                    <t t-if="alert == 'Başvuru başarıyla tamamlandı'">
+                        <div class="alert alert-success" role="alert">
+                            <t t-out="alert"/>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div class="alert alert-danger" role="alert">
+                            <t t-out="alert"/>
+                        </div>
+                    </t>
+
+                </t>
+
                 <form method="post" t-attf-action="/apply" class="oe_form mx-auto mt-4" enctype="multipart/form-data">
                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 

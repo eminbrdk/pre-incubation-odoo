@@ -4,7 +4,7 @@
     'category': 'ERP',
     'summary': 'Modul for Pre-Incubation',
     'author': 'Muhammed Emin Bardakcı, Ulaş Kaba & Cumhur Öksüz',
-    'depends': ["base"],
+    'depends': ["base", "portal"],
     'data': [
         'security/ir.model.access.csv',
         'security/res_groups.xml',
@@ -20,7 +20,7 @@
         "views/aplly_success_web_view.xml",
         "views/create_user_success.xml",
 
-        #"views/portal_view.xml",
+        "views/portal_view.xml",
     ],
     "demo": [],
     'installable': True,

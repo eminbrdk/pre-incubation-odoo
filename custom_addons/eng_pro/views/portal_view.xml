@@ -1,0 +1,32 @@
+<odoo>
+
+    <!-- baştaki menüye ekleme yaptık -->
+    <template id="portal_my_home" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_category')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="icon" t-value="'/eng_pro/static/src/img/applicationn.png'"/>
+                <t t-set="title">Application Status</t>
+                <t t-set="text">See your application status</t>
+                <t t-set="url" t-value="'/my/application'"/>
+                <t t-set="config_card" t-value="True"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- header gibi bir şey koyduk (breadcrumbs deniliyor buna)-->
+    <template id="portal_breadcrumbs" inherit_id="portal.portal_breadcrumbs">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'user_application_portal_view'" class="breadcrumb-item">Application</li>
+        </xpath>
+    </template>
+
+    <!-- application statusa tıklandığında gelinecek view -->
+    <template id="pre_application_stat_view" inherit_id="portal.portal_sidebar">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+            <t t-if="page_name == 'user_application_portal_view'">
+                <p>Başvurunuzun durumu: <t t-out="application.status"/></p>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>
