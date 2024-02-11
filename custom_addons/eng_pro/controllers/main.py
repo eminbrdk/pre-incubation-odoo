@@ -14,7 +14,7 @@ class ApplyWebsite(http.Controller):
 
         if request.httprequest.method == "POST":
             if request.env["project.application"].sudo().search([("portal_user_id", "=", request.env.user.id)]):
-                vals['alert'] = "Kullanıcı daha önceden başvuru yapmış. Tekrar yapamaz"
+                vals['alert'] = "Kullanıcı daha önceden başvuru yapmış. Tekrar yapamaz!"
             else:
                 name = post.get("name")
                 surname = post.get("surname")
