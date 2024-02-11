@@ -5,7 +5,7 @@
         <xpath expr="//div[hasclass('o_portal_category')]" position="inside">
             <t t-call="portal.portal_docs_entry">
                 <t t-set="icon" t-value="'/eng_pro/static/src/img/applicationn.png'"/>
-                <t t-set="title">Application Status</t>
+                <t t-set="title">Application</t>
                 <t t-set="text">See your application status</t>
                 <t t-set="url" t-value="'/my/application'"/>
                 <t t-set="config_card" t-value="True"/>
