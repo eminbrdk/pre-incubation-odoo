@@ -6,20 +6,28 @@
                 <form method="post" t-attf-action="/create_portal_user" class="oe_form mx-auto mt-4" enctype="multipart/form-data">
                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
-                    <div class="form-group mb-3">
-                        <label for="name">Name:</label>
-                        <input type="text" name="name" class="form-control" required="True"/>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="email">Email:</label>
-                        <input type="email" name="email" class="form-control" required="True"/>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="password">Password:</label>
-                        <input type="text" name="password" class="form-control" required="True"/>
+                    <div style="flex; justify-content: left;">
+                        <div class="form-group mb-3" style="max-width: 300px;">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" class="form-control" required="True" placeholder="Name"/>
+                        </div>
                     </div>
 
-                    <div class="text-center mb-3">
+                    <div style="justify-content: left;">
+                        <div class="form-group mb-3" style="max-width: 300px;">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" required="True" placeholder="Email"/>
+                        </div>
+                    </div>
+
+                    <div style="justify-content: left;">
+                        <div class="form-group mb-3" style="max-width: 300px;">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control" required="True" placeholder="Password"/>
+                        </div>
+                    </div>
+
+                    <div style="justify-content: left; padding-bottom: 100px">
                         <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
                     </div>
 

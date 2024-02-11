@@ -69,19 +69,23 @@
                                     <field name="business_plan" filename="project_file_name" readonly="1"/>
                                     <field name="fsmh" filename="project_file_name" readonly="1"/>
                                     <field name="incentives" filename="project_file_name" readonly="1"/>
-                                    <field name="resumes" readonly="1">
-                                            <tree>
-                                                <field name="data" filename="project_file_name"/>
-                                            </tree>
-                                    </field>
                                     <field name="project_information" filename="project_file_name" readonly="1"/>
-                                    <field name="gallery" readonly="1">
-                                        <tree>
-                                            <field name="data" filename="project_file_name"/>
-                                        </tree>
-                                    </field>
                                     <field name="reference" filename="project_file_name" readonly="1"/>
                                 </group>
+                            </page>
+                            <page string="Project Team Resumes">
+                                <field name="resumes" readonly="1">
+                                    <tree>
+                                        <field name="data" filename="project_file_name"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Pictures or Videos">
+                                <field name="gallery" readonly="1">
+                                    <tree>
+                                        <field name="data" filename="project_file_name"/>
+                                    </tree>
+                                </field>
                             </page>
                             <page string="Application Information">
                                 <group>

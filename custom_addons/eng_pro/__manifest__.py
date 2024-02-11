@@ -18,7 +18,9 @@
         "views/apply_web_view.xml",
         "views/create_user_web_view.xml",
         "views/aplly_success_web_view.xml",
-        "views/create_user_success.xml"
+        "views/create_user_success.xml",
+
+        #"views/portal_view.xml",
     ],
     "demo": [],
     'installable': True,
