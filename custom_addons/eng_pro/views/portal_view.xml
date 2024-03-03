@@ -24,7 +24,9 @@
     <template id="pre_application_stat_view" inherit_id="portal.portal_sidebar">
         <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
             <t t-if="page_name == 'user_application_portal_view'">
-                <p>Başvurunuzun durumu: <t t-out="application.status"/></p>
+                <p t-if="application.status == 'not_evaluated'">Your application has not been evaluated yet</p>
+                <p t-if="application.status == 'accepted'">Congratulations, your application accepted</p>
+                <p t-if="application.status == 'refused'">Unfortunately, your application refused</p>
             </t>
         </xpath>
     </template>
