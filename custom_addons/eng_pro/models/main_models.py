@@ -13,7 +13,15 @@ class Application(models.Model):
 
     project_name = fields.Char(string='Project Name', required=True)
     project_description = fields.Text(string='Project Description', required=True)
-    project_sector = fields.Char(string='Project Sector', required=True)
+    project_sector = fields.Selection(
+        [
+            ("A", "Neighborhood A - Social Services and Education"),
+            ("B", "Neighborhood B - Technology and Innovation"),
+            ("C", "Neighborhood C - Environment and Sustainability"),
+            ("D", "Neighborhood D - Culture and Art"),
+        ],
+        string='Project Sector',
+        required=True)
 
     canvas = fields.Binary(string='Canvas Business Model Evaluation Form', attachment=True, help="Upload a PDF file")
     business_plan = fields.Binary(string='Beneficiary Group Project Business Plan', attachment=True, help="Upload a PDF file")
@@ -37,6 +45,8 @@ class Application(models.Model):
     decision_maker = fields.Many2one("res.users", string="Decision maker")
     portal_user_id = fields.Many2one("res.users", string="Portal user who applied")
     project_group = fields.Many2one("project.group", string="Project Group")
+
+    jury_evaluations = fields.One2many('jury.evaluation', 'project_application_id', string='Jury Evaluations')
 
     def accept_pressed(self):
         if self.status != "accepted":
@@ -64,6 +74,24 @@ class Application(models.Model):
 
         self.status = "refused"
         self.decision_maker = self.env.user
+
+
+class JuryEvaluation(models.Model):
+    _name = 'jury.evaluation'
+    _description = 'Jury Evaluation'
+
+    decision_maker = fields.Many2one("res.users", string="Decision maker")
+    questions = fields.One2many('jury.question', 'jury_question_id', string='Questions')
+
+    project_application_id = fields.Many2one('project.application', string='Project Application')
+
+
+class JuryQuestion(models.Model):
+    _name = 'jury.question'
+    _description = 'Jury Question'
+
+    text = "abc"
+    jury_question_id = fields.Many2one('jury.evaluation', string='Jury Evaluation')
 
 
 class FileAttachment(models.Model):

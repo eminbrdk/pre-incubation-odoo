@@ -50,7 +50,12 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="project_sector">Project Sector:</label>
-                        <input type="text" name="project_sector" class="form-control" required="True"/>
+                        <select id="project_sector" name="project_sector" required="True" class="form-control">
+                            <option value="A">Neighborhood A - Social Services and Education</option>
+                            <option value="B">Neighborhood B - Technology and Innovation</option>
+                            <option value="C">Neighborhood C - Environment and Sustainability</option>
+                            <option value="D">Neighborhood D - Culture and Art</option>
+                        </select>
                     </div>
 
                     <h4 class="mb-3">Project Documentation</h4>

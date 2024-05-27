@@ -5,18 +5,34 @@
         <field name="sequence">50</field>
     </record>
 
-    <!-- group_property_user diye group oluşturdum -->
+    <!-- User -->
     <record id="group_project_group" model="res.groups">
-        <field name="name">Project Group: Manage own project</field>
+        <field name="name">Entrepreneur: Manage own project</field>
         <field name="category_id" ref="eng_pro.module_category_eng_pro"/>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/> <!-- ododaki hazır varilere erişiyoruz bunla galiba ?? -->
     </record>
 
-    <!-- group_property_manager diye group oluşturdum -->
+    <!-- Manager -->
     <record id="group_project_manager" model="res.groups">
         <field name="name">Manager: Manage everything in Pre-incubation</field>
         <field name="category_id" ref="eng_pro.module_category_eng_pro"/>
         <field name="implied_ids" eval="[(4, ref('eng_pro.group_project_group'))]"/> <!-- user grubundaki herşeye erişme hakkı verdik galiba ?? -->
     </record>
 
+     <!-- Jury -->
+    <record id="group_project_jury" model="res.groups">
+        <field name="name">Jury Member: Evaluate applications in Pre-incubation</field>
+        <field name="category_id" ref="eng_pro.module_category_eng_pro"/>
+        <field name="implied_ids" eval="[(4, ref('eng_pro.group_project_group'))]"/> <!-- user grubundaki herşeye erişme hakkı verdik galiba ?? -->
+    </record>
+
+     <!-- Mentor -->
+    <record id="group_project_mentor" model="res.groups">
+        <field name="name">Mentor: Gives mentoring in Pre-incubation</field>
+        <field name="category_id" ref="eng_pro.module_category_eng_pro"/>
+        <field name="implied_ids" eval="[(4, ref('eng_pro.group_project_group'))]"/> <!-- user grubundaki herşeye erişme hakkı verdik galiba ?? -->
+    </record>
+
+     <!-- Admin -->
+     <!-- Yazılım tarafindakiler. Bu kullanıcılar buradan oluşturulmuyor -->
 </odoo>
