@@ -70,6 +70,8 @@ class ApplyWebsite(http.Controller):
                     }) for r in resumes]
                     reference_data = base64.b64encode(reference.read()) if reference else False
 
+                    questions = request.env["jury.question"].sudo().search([])
+
                     new_application = request.env["project.application"].sudo().create({
                         "name": name,
                         "surname": surname,
@@ -90,6 +92,7 @@ class ApplyWebsite(http.Controller):
                         "reference": reference_data,
 
                         "apply_date": apply_date,
+                        "questions": questions,
                     })
 
                     new_application["portal_user_id"] = request.env.user

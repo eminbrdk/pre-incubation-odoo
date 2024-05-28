@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <!-- Ana ekranda gözükecekler -->
+        <record id="project_question_tree_view" model="ir.ui.view">
+            <field name="name">jury.question.tree</field>
+            <field name="model">jury.question</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="text"/>
+                    <field name="point1"/>
+                    <field name="point2"/>
+                    <field name="point3"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- new'e basıldığında gelen ekran -->
+        <record id="project_question_form_view" model="ir.ui.view">
+            <field name="name">jury.question.form</field>
+            <field name="model">jury.question</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                    <field name="text"/>
+                    <field name="point1"/>
+                    <field name="point2"/>
+                    <field name="point3"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- tıklandığında bu ekrana gelmemiz için yazılan kod -->
+        <record id="action_question" model="ir.actions.act_window"> <!-- action_property ile menu_itemda tıklama ile butaya geldik -->
+            <field name="name">Question</field>
+            <field name="res_model">jury.question</field>
+            <field name="view_mode">tree,form</field> <!-- hangisini öne koyarsan onla başlarsın -->
+            <field name="view_id" ref="project_question_tree_view"/> <!-- ana ekranının id'si -->
+            <field name="help" type="html">
+                <p>
+                    Buraya alakalı bir şeyler yaz falan filan
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

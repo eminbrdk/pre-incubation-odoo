@@ -3,3 +3,5 @@ access_project_application,access_project_application,eng_pro.model_project_appl
 access_project_group,access_project_group,eng_pro.model_project_group,base.group_user,1,1,1,1
 access_file_attachment,access_file_attachment,eng_pro.model_file_attachment,base.group_user,1,1,1,1
 access_gallery_attachment,access_gallery_attachment,eng_pro.model_gallery_attachment,base.group_user,1,1,1,1
+access_jury_question,access_jury_question,eng_pro.model_jury_question,base.group_user,1,1,1,1
+access_portal_user_creator,access_portal_user_creator,eng_pro.model_portal_user_creator,base.group_user,1,1,1,1

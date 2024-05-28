@@ -94,6 +94,19 @@
                                     <field name="decision_maker" readonly="1"/>
                                 </group>
                             </page>
+                            <page string="Jury Evaluation">
+                                <field name="questions">
+                                    <tree editable="false" style="padding-top: 15px; padding-bottom: 15px;">
+                                        <field name="text" readonly="1"/>
+                                        <field name="point1" readonly="1"/>
+                                        <field name="point2" readonly="1"/>
+                                        <field name="point3" readonly="1"/>
+                                        <button type="object" name="action_accept_offer" class="btn btn-primary" string="0"/>
+                                        <button type="object" name="action_accept_offer" class="btn btn-primary" string="1"/>
+                                        <button type="object" name="action_accept_offer" class="btn btn-primary" string="2"/>
+                                    </tree>
+                                </field>
+                            </page>
                         </notebook>
                     </sheet>
                 </form>

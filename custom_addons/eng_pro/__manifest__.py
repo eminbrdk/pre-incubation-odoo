@@ -12,6 +12,7 @@
         'security/ir_rule.xml',
 
         "views/pro_application_view.xml", # bu menüden önce yazılmalı çoomelli !!!!!!!!!!!!
+        "views/question.xml",
         "views/pro_group_project_view.xml",
         "views/menu_items.xml",
 

@@ -42,11 +42,11 @@ class Application(models.Model):
         default="not_evaluated"
     )
     apply_date = fields.Date(string="Application Date")
-    decision_maker = fields.Many2one("res.users", string="Decision maker")
     portal_user_id = fields.Many2one("res.users", string="Portal user who applied")
     project_group = fields.Many2one("project.group", string="Project Group")
 
-    jury_evaluations = fields.One2many('jury.evaluation', 'project_application_id', string='Jury Evaluations')
+    decision_maker = fields.Many2one("res.users", string="Decision maker")
+    questions = fields.One2many("jury.question", "project_application_id" , string="Evaluation Questions")
 
     def accept_pressed(self):
         if self.status != "accepted":
@@ -76,22 +76,19 @@ class Application(models.Model):
         self.decision_maker = self.env.user
 
 
-class JuryEvaluation(models.Model):
-    _name = 'jury.evaluation'
-    _description = 'Jury Evaluation'
-
-    decision_maker = fields.Many2one("res.users", string="Decision maker")
-    questions = fields.One2many('jury.question', 'jury_question_id', string='Questions')
-
-    project_application_id = fields.Many2one('project.application', string='Project Application')
-
-
 class JuryQuestion(models.Model):
     _name = 'jury.question'
     _description = 'Jury Question'
 
-    text = "abc"
-    jury_question_id = fields.Many2one('jury.evaluation', string='Jury Evaluation')
+    text = fields.Char(string="Factor")
+    point1 = fields.Char(string="Score 0")
+    point2 = fields.Char(string="Score 1")
+    point3 = fields.Char(string="Score 2")
+
+    project_application_id = fields.Many2one('project.application', string='Project Application')
+
+    def action_accept_offer(self):
+        print("abc")
 
 
 class FileAttachment(models.Model):
@@ -128,6 +125,7 @@ class ProjectGroup(models.Model):
 
 class PortalUserCreator(models.TransientModel):
     _name = 'portal.user.creator'
+    _description = "abc"
 
     name = fields.Char(string='Name')
     email = fields.Char(string='Email')

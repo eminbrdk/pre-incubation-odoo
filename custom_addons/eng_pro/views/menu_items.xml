@@ -4,8 +4,9 @@
         <menuitem id="menu_pre_incubation" name="General" groups="eng_pro.group_project_manager">
             <menuitem id="menu_pre" name="Applications" action="eng_pro.action_property" groups="eng_pro.group_project_manager"/>
         </menuitem>
-        <menuitem id="menu_pre_incubation_groups" name="Users" groups="eng_pro.group_project_group">
+        <menuitem id="menu_pre_incubation_groups" name="Additional" groups="eng_pro.group_project_group">
             <menuitem id="menu_pre2" name="Project Groups" action="eng_pro.action_property_group" groups="eng_pro.group_project_manager"/>
+            <menuitem id="menu_pre3" name="Evaluation Questions" action="eng_pro.action_question" groups="eng_pro.group_project_manager"/>
         </menuitem>
     </menuitem>
 </odoo>
